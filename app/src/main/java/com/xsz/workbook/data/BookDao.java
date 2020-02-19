@@ -10,10 +10,10 @@ import java.util.List;
 @Dao
 public interface BookDao {
 
-    @Query("SELECT * FROM Book")
+    @Query("SELECT * FROM book")
     List<Book> getAll();
 
-    @Query("SELECT * FROM Book WHERE bid IN (:bookIds)")
+    @Query("SELECT * FROM book WHERE bid IN (:bookIds)")
     List<Book> loadAllByIds(int[] bookIds);
 
     @Query("SELECT * FROM book WHERE book_name LIKE :booknm LIMIT 1")

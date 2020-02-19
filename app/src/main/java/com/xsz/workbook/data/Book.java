@@ -12,7 +12,7 @@ import java.time.LocalTime;
  * 记录会议材料的数据库
  */
 
-@Entity
+@Entity(tableName = "book")
 public class Book {
 
     @PrimaryKey
@@ -28,13 +28,35 @@ public class Book {
     private LocalTime localTime;
     @ColumnInfo(name = "book_local_date_time")
     private LocalDateTime localDateTime;
+    @ColumnInfo(name = "book_summary")
+    private String bookSummary;
+    @ColumnInfo(name = "book_news")
+    private String bookNews;
 
     public Book() {
         bookName = null;
         location = null;
+        bookSummary = null;
+        bookNews = null;
         localDateTime = LocalDateTime.now();
         localDate = localDateTime.toLocalDate();
         localTime = localDateTime.toLocalTime();
+    }
+
+    public String getBookNews() {
+        return bookNews;
+    }
+
+    public String getBookSummary() {
+        return bookSummary;
+    }
+
+    public void setBookNews(String bookNews) {
+        this.bookNews = bookNews;
+    }
+
+    public void setBookSummary(String bookSummary) {
+        this.bookSummary = bookSummary;
     }
 
     public void setLocalDate(LocalDate localdate) {

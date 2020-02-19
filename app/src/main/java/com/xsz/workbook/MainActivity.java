@@ -1,11 +1,13 @@
 package com.xsz.workbook;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.provider.ContactsContract;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    public static void actionStart(Context context, String username) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("param1", username);
+        context.startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 // MYCODE START
                 Intent intent = new Intent(MainActivity.this, NewBookActivity.class);
+                startActivity(intent);
 // MYCODE END
             }
         });

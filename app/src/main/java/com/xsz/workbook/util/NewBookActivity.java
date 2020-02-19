@@ -1,6 +1,7 @@
 package com.xsz.workbook.util;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.xsz.workbook.MainActivity;
 import com.xsz.workbook.R;
 import com.xsz.workbook.data.Book;
+import com.xsz.workbook.data.BookDatabase;
 
 public class NewBookActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,10 +55,13 @@ public class NewBookActivity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(NewBookActivity.this, "活动地点不能为空", Toast.LENGTH_SHORT).show();
             return false;
         }
+        BookDatabase bookdb = Room.databaseBuilder(getApplicationContext(), BookDatabase.class, "book").build();
         Book book = new Book();
         book.setBookName(bookName);
         book.setLocation(bookLocation);
-
+        book.setBookNews("");
+        book.setBookSummary("");
+        bookdb.bookDao().insertAll(book);
         return true;
     }
 }

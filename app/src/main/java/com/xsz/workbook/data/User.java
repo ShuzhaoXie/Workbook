@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "user")
 public class User {
 
     @PrimaryKey
-    private String uid;
+    private int uid;
 
     @ColumnInfo(name = "user_name")
     private String userName;
@@ -19,7 +19,7 @@ public class User {
     @ColumnInfo(name = "user_password")
     private String userPassword;
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
@@ -35,7 +35,7 @@ public class User {
         return userPassword;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
