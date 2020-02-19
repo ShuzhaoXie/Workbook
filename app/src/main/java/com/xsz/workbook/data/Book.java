@@ -2,6 +2,7 @@ package com.xsz.workbook.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
@@ -12,12 +13,15 @@ import java.time.LocalTime;
  * 记录会议材料的数据库
  */
 
-@Entity(tableName = "book")
+@Entity(tableName = "book",
+        foreignKeys = @ForeignKey(entity = User.class, parentColumns = "uid", childColumns = "user_id"))
 public class Book {
 
     @PrimaryKey
-    public int bid;
+    private int bid;
 
+    @ColumnInfo(name = "user_id")
+    private int uid;
     @ColumnInfo(name = "book_name")
     private String bookName;
     @ColumnInfo(name = "book_location")

@@ -10,7 +10,7 @@ public class User {
     @PrimaryKey
     private int uid;
 
-    @ColumnInfo(name = "user_name")
+    @ColumnInfo(name = "username")
     private String userName;
 
     @ColumnInfo(name = "user_email")
