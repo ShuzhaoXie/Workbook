@@ -22,7 +22,7 @@ public class DataRepository {
         mObservableBooks = new MediatorLiveData<>();
 
         mObservableBooks.addSource(mDatabase.bookDao().getAll(),
-                books -> {
+                Observer<Book> {
             if (mDatabase.getDatabaseCreated().getValue() != null) {
                 mObservableBooks.postValue(books);
             }
@@ -49,7 +49,7 @@ public class DataRepository {
         return mDatabase.bookDao().loadBookByIds(bookId);
     }
 
-    public LiveData<String> loadUserPasswordByUsername(final String username) {
+    public String loadUserPasswordByUsername(final String username) {
         return mDatabase.userDao().findUserPassword(username);
     }
 

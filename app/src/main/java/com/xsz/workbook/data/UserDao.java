@@ -14,7 +14,7 @@ public interface UserDao {
     LiveData<List<User>> selectAll();
 
     @Query("SELECT user_password FROM user WHERE username = :unm LIMIT 1")
-    LiveData<String> findUserPassword(String unm);
+    String findUserPassword(String unm);
 
     @Query("SELECT COUNT(*) FROM user")
     int totalNumberOfUsers();

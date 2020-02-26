@@ -59,8 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(LoginActivity.this, "密码不得为空", Toast.LENGTH_SHORT).show();
             return false;
         }
-        UserDatabase userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "user").build();
-        String testpwd = userDatabase.userDao().findUserPassword(username);
+        String testpwd = DataRepository.getInstance().loadUserPasswordByUsername(username);
         if (testpwd.equals(password)) {
             MainActivity.actionStart(LoginActivity.this, username);
             return true;
