@@ -21,10 +21,12 @@ public class DataRepository {
         mDatabase = database;
         mObservableBooks = new MediatorLiveData<>();
 
-        mObservableBooks.addSource(mDatabase.bookDao().getAll(),
-                Observer<Book> {
-            if (mDatabase.getDatabaseCreated().getValue() != null) {
-                mObservableBooks.postValue(books);
+        mObservableBooks.addSource(mDatabase.bookDao().getAll(), new Observer<List<Book>>() {
+            @Override
+            public void onChanged(List<Book> books) {
+                if (mDatabase.getDatabaseCreated().getValue() != null) {
+                    mObservableBooks.postValue(books);
+                }
             }
         });
 
