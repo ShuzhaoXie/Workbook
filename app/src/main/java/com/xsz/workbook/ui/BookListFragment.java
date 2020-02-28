@@ -33,6 +33,7 @@ public class BookListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
         // TODO: Use the ViewModel
+
     }
 
 }

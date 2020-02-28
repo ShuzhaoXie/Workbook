@@ -58,5 +58,9 @@ public class DataRepository {
     public LiveData<List<Book>> loadBookByUserId(final int userId) {
         return mDatabase.bookDao().loadBooksByUserId(userId);
     }
+
+    public LiveData<Book> loadBookByBookId(final int bookId) {
+        return mDatabase.bookDao().loadBookByIds(bookId);
+    }
     //要用再加吧
 }

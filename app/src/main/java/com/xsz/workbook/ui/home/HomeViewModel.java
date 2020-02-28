@@ -4,6 +4,7 @@ import android.app.Application;
 import android.provider.ContactsContract;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -15,17 +16,18 @@ import com.xsz.workbook.data.Book;
 
 import java.util.List;
 
-public class HomeViewModel extends ViewModel {
+public class HomeViewModel extends AndroidViewModel {
 
-    private final LiveData<List<Book>> mObservableBooks;
+    private final LiveData<Book> mObservableBook;
 
     private HomeViewModel(@NonNull Application application, DataRepository repository,
-                         final int uid) {
-        mObservableBooks = repository.loadBookByUserId(uid);
+                         final int bookId) {
+        super(application);
+        mObservableBook = repository.loadBookByBookId(bookId);
     }
 
-    public LiveData<List<Book>> getText() {
-        return mObservableBooks;
+    public LiveData<Book> getText() {
+        return mObservableBook;
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
