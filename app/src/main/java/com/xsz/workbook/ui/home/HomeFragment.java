@@ -32,6 +32,8 @@ public class HomeFragment extends Fragment {
 //        });
 //
 //        return root;
+        private static final String KEY_BOOK_ID = "book_id";
 
+        private ;
     }
 }
