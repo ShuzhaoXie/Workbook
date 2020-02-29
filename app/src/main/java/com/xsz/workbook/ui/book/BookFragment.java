@@ -13,10 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xsz.workbook.R;
+import com.xsz.workbook.databinding.BookFragmentBinding;
 
 public class BookFragment extends Fragment {
 
-    private BookViewModel mViewModel;
+    private BookFragmentBinding mBinding;
 
     public static BookFragment newInstance() {
         return new BookFragment();
